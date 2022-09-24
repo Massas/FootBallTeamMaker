@@ -8,4 +8,6 @@ $Template = $Templates.getTemplate($continent)
 $name = 'Milano'
 $teamname = $Template.replace("<name>", "$name")
 
-$teamname
+$tmp = $Templates.addUnited($teamname)
+
+$tmp
