@@ -1,6 +1,7 @@
 class TeamNameTemplate {
     # チーム名のテンプレート
     $teamnameArr = @(
+        # categoly, name, Full name
         @('common', "<name> FC", 'Football Club'),
         @('common', "<name> SC", 'Soccer Club'),
         @('common', "<name> AS", 'Athletic Club (Algeria)'), 
@@ -18,7 +19,7 @@ class TeamNameTemplate {
     )
 
     [string] addUnited ([String]$TeamnameStr) {
-        return "${TeamnameStr} + ' United'"
+        return ${TeamnameStr} + " United"
     }
 
     [string] getTemplate ([string]$continent) {
