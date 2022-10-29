@@ -7,6 +7,7 @@
 
 # main
 $source = '.\ThePlaceAPI\result.log'
+$result = '.\result.log'
 
 $continent = ''
 $Templates = New-Object TeamNameTemplateClass
@@ -28,3 +29,5 @@ $tmp = $Templates.addUnited($teamname)
 Write-Host "[main]tmp: $tmp"
 $fixedName = $Templates.FixTeamName($tmp)
 Write-Host "[main]fixedName: $fixedName"
+
+Write-Output $fixedName | Out-File $result -Encoding utf8 -Append
