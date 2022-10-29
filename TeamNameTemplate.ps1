@@ -1,4 +1,4 @@
-class TeamNameTemplate {
+class TeamNameTemplateClass {
     # チーム名のテンプレート
     $teamnameArr = @(
         # categoly, name, Full name
@@ -26,9 +26,29 @@ class TeamNameTemplate {
     }
 
     [string] getTemplate ([string]$continent) {
-        $count = $this.teamnameArr.Count
-		$num = Get-Random -Maximum $count -Minimum 0
-        return $this.teamnameArr[$num][1]
+        Write-Host $continent
+        if($null -eq $continent -or $continent -eq ''){
+            $count = $this.teamnameArr.Count
+            $num = Get-Random -Maximum ($count - 1) -Minimum 0
+            Write-Host "[TeamNameTemplateClass]getTemplate1: $num"
+            return $this.teamnameArr[$num][1]
+        }else {
+            $arr = $this.teamnameArr | Where-Object {$_ -eq $continent}
+            Write-Host $arr
+            $count = $arr.Count
+            Write-Host "[TeamNameTemplateClass]getTemplate2: $count"
+            $num = Get-Random -Maximum ($count - 1) -Minimum 0
+            Write-Host "[TeamNameTemplateClass]getTemplate3: $num"
+            return $arr[$num][1]
+        }
+    }
+
+    [string] FixTeamName ([string]$teamnameOriginal) {
+        $teamnameFixed = $teamnameOriginal
+        if($teamnameOriginal -contains "SC  United"){
+            $teamnameFixed = $teamnameOriginal.replace("SC  United","United SC")
+        }
+        return $teamnameFixed
     }
 }
 
