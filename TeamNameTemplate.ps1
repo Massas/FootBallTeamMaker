@@ -3,8 +3,11 @@ class TeamNameTemplate {
     $teamnameArr = @(
         # categoly, name, Full name
         @('common', "<name> FC", 'Football Club'),
+        @('common', "FC <name>", 'Football Club'),
         @('common', "<name> SC", 'Soccer Club'),
+        @('common', "SC <name>", 'Soccer Club'),
         @('common', "<name> AS", 'Athletic Club (Algeria)'), 
+        @('common', "AS <name>", 'Athletic Club (Algeria)'), 
         @('Europe', "KF <name>", 'Klubi Futbollistik (Albania)'),
         @('Europe', "FK <name>", 'Fotball Klubb (Sweden)'),
         @('Europe', "KS <name>", 'Klubi Sportiv (Albania)'),
