@@ -1,6 +1,6 @@
 Class PlaceAPIClass {
     $searchKey = 'name :'
-    $contentsNum = 10
+    $contentsRow = 300
 
     [string[]] getContentsFromSource($file) {
         $contentAll = Get-Content($file)
@@ -14,9 +14,9 @@ Class PlaceAPIClass {
     [string[]] getChoices($contents) {
         $length = $contents.Length
         #Write-Host "[PlaceAPIClass]getChoices: $length"
-        $tmp = $contents[($length-100)..($length-1)] # 最新の10件を取得する
+        $tmp = $contents[($length-$this.contentsRow)..($length-1)] # 最新の10件を取得する
         $choices = $tmp | Where-Object {$_.indexOf($searchKey)}
-        Write-Host '[PlaceAPIClass]getChoices: ' $choices
+        #Write-Host '[PlaceAPIClass]getChoices: ' $choices
         return $choices
     }
 

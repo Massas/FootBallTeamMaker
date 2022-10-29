@@ -25,8 +25,10 @@ $name = $places.setChoice($choices)
 $teamname = $Template.replace("<name>", "$name") # 最終的にこの処理でチーム名が作られる
 Write-Host "[main]teamname: $teamname"
 
-$tmp = $Templates.addUnited($teamname)
-Write-Host "[main]tmp: $tmp"
+if((Get-Random) % 2 -eq 0){
+    $tmp = $Templates.addUnited($teamname)
+    Write-Host "[main]tmp: $tmp"
+}
 $fixedName = $Templates.FixTeamName($tmp)
 Write-Host "[main]fixedName: $fixedName"
 
