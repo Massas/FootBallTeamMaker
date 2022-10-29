@@ -26,19 +26,19 @@ class TeamNameTemplateClass {
     }
 
     [string] getTemplate ([string]$continent) {
-        Write-Host $continent
+        #Write-Host $continent
         if($null -eq $continent -or $continent -eq ''){
             $count = $this.teamnameArr.Count
             $num = Get-Random -Maximum ($count - 1) -Minimum 0
-            Write-Host "[TeamNameTemplateClass]getTemplate1: $num"
+            #Write-Host "[TeamNameTemplateClass]getTemplate1: $num"
             return $this.teamnameArr[$num][1]
         }else {
             $arr = $this.teamnameArr | Where-Object {$_ -eq $continent}
-            Write-Host $arr
+            #Write-Host $arr
             $count = $arr.Count
-            Write-Host "[TeamNameTemplateClass]getTemplate2: $count"
+            #Write-Host "[TeamNameTemplateClass]getTemplate2: $count"
             $num = Get-Random -Maximum ($count - 1) -Minimum 0
-            Write-Host "[TeamNameTemplateClass]getTemplate3: $num"
+            #Write-Host "[TeamNameTemplateClass]getTemplate3: $num"
             return $arr[$num][1]
         }
     }
