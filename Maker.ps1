@@ -6,7 +6,7 @@
 # The PlaceAPIのログから地名を取得する
 
 # main
-$source = '.\ThePlaceAPI\result.log'
+$source = '.\extract.txt'
 $result = '.\result.log'
 
 $continent = ''
@@ -22,14 +22,17 @@ Write-Host "[main]Template: $Template"
 $contents = $places.getContentsFromSource($source)
 $choices = $places.getChoices($contents)
 $name = $places.setChoice($choices)
-$teamname = $Template.replace("<name>", "$name") # 最終的にこの処理でチーム名が作られる
-Write-Host "[main]teamname: $teamname"
 
-if((Get-Random) % 2 -eq 0){
-    $tmp = $Templates.addUnited($teamname)
-    Write-Host "[main]tmp: $tmp"
+if($name -ne '' -or $null -ne $name){
+    $teamname = $Template.replace("<name>", "$name") # 最終的にこの処理でチーム名が作られる
+    Write-Host "[main]teamname: $teamname"
+    
+    if((Get-Random) % 2 -eq 0){
+        $tmp = $Templates.addUnited($teamname)
+        $teamname = $tmp
+    }
+    $fixedName = $Templates.FixTeamName($tmp)
+    Write-Host "[main]fixedName: $fixedName"
+    
+    Write-Output $fixedName | Out-File $result -Encoding utf8 -Append
 }
-$fixedName = $Templates.FixTeamName($tmp)
-Write-Host "[main]fixedName: $fixedName"
-
-Write-Output $fixedName | Out-File $result -Encoding utf8 -Append
