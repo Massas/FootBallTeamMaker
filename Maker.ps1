@@ -31,7 +31,11 @@ if($name -ne '' -or $null -ne $name){
         $tmp = $Templates.addUnited($teamname)
         $teamname = $tmp
     }
-    $fixedName = $Templates.FixTeamName($tmp)
+    if((Get-Random) % 2 -eq 0){
+        $tmp = $Templates.addSecondTeam($teamname)
+        $teamname = $tmp
+    }
+    $fixedName = $Templates.FixTeamName($teamname)
     Write-Host "[main]fixedName: $fixedName"
     
     Write-Output $fixedName | Out-File $result -Encoding utf8 -Append
