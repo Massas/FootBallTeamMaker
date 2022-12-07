@@ -1,5 +1,7 @@
 # FootballTeamNameMaker
 
+<img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Massas/FootballTeamNameMaker/total?style=plastic">
+
 ## TeamNames I mede are below. 
 
 <pre>
